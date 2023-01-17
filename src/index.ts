@@ -1,0 +1,1 @@
+export { TypeSpot } from './TypeSpot';
