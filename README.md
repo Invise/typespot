@@ -1,4 +1,4 @@
-# TypeSpot
+# TypeSpot 💫
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -8,26 +8,54 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-> The missing type system for your Hubspot objects.
+> The missing type system for your HubSpot objects.
 
-## Install
+### What?
+This package generates explicit type files for all of your object types within your current portal, looking something like:
 
+```ts
+type Company = {
+    properties: {
+        name: string
+        some_custom_prop: 'cool' | 'cooler'
+        // ... all default and custom props
+    }
+}
+```
+
+### Why?
+When using `@hubspot/api-client` with TypeScript, the objects returned are practically black boxes:
+```ts
+class SimplePublicObject {
+    properties: {
+        [key: string]: string;
+    };        
+}
+```
+
+So, we have a hard time type checking when reading/writing to the API and we constantly have to reference the web portal. With this package we can develop faster and more confidently.
+
+## Usage
+Install the package:
 ```bash
 npm install typespot
 ```
 
-
-## The problem
-TODO
-
-## Generate type files with CLI
-
-## Generate type files programmatically
+Next, generate your files
+```bash
+npx ts-node typespot --token=ACCESS_TOKEN
+```
+Alternatively, you may generate them programatically:
 ```ts
 import { TypeSpot } from 'typespot';
+import { Client } from "@hubspot/api-client";
 
+const client = new Client({accessToken: 'secret'})
 new TypeSpot({ client }).write()
 ```
+
+### License
+MIT
 
 [build-img]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml
@@ -43,3 +71,4 @@ new TypeSpot({ client }).write()
 [semantic-release-url]:https://github.com/semantic-release/semantic-release
 [commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
 [commitizen-url]:http://commitizen.github.io/cz-cli/
+
