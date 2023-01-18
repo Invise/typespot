@@ -54,6 +54,11 @@ const client = new Client({accessToken: 'secret'})
 new TypeSpot({ client }).write()
 ```
 
+### TODO
+[ ] missing some object types in CRM
+[ ] missing custom object in CRM
+[ ] ALL other types are missing
+
 ### License
 MIT
 

@@ -16,7 +16,14 @@ export class TypeSpot {
   }
 
   async write() {
-    const entities = ['companies', 'contacts', 'tickets'];
+    const entities = [
+      'companies',
+      'contacts',
+      'deals',
+      'products',
+      'tickets',
+      'quotes',
+    ];
 
     for (const entity of entities) {
       await this.writeEntity(entity);
