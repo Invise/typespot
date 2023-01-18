@@ -16,7 +16,7 @@ export class TypeSpot {
   }
 
   async write() {
-    const entities = ['companies', 'contacts'];
+    const entities = ['companies', 'contacts', 'tickets'];
 
     for (const entity of entities) {
       await this.writeEntity(entity);
@@ -32,9 +32,8 @@ export class TypeSpot {
         properties: response.results,
       }).write();
     } catch (error) {
-      console.log(error);
       console.log(
-        `Error while fetching properties for ${entity}, skipping. Did you forget to assign scopes?`
+        `Error while fetching properties for ${entity}, skipping. Did you forget to assign scopes? 🟡`
       );
     }
   }
