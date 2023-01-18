@@ -59,10 +59,10 @@ MIT
 
 [build-img]:https://github.com/invise/typespot/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/invise/typespot/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/typescript-npm-package-template
-[downloads-url]:https://www.npmtrends.com/typescript-npm-package-template
-[npm-img]:https://img.shields.io/npm/v/typescript-npm-package-template
-[npm-url]:https://www.npmjs.com/package/typescript-npm-package-template
+[downloads-img]:https://img.shields.io/npm/dt/typespot
+[downloads-url]:https://www.npmtrends.com/typespot
+[npm-img]:https://img.shields.io/npm/v/typespot
+[npm-url]:https://www.npmjs.com/package/typespot
 [issues-img]:https://img.shields.io/github/issues/invise/typespot
 [issues-url]:https://github.com/invise/typespot/issues
 [codecov-img]:https://codecov.io/gh/invise/typespot/branch/main/graph/badge.svg
