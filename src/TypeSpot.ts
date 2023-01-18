@@ -3,14 +3,16 @@ import { EntityTypeFile } from './EntityTypeFile';
 
 export type TypeSpotOptions = {
   client: Client;
+  path?: string;
 };
 
 export class TypeSpot {
   client: Client;
-  path = 'src/types';
+  path?: string;
 
   constructor(options: TypeSpotOptions) {
     this.client = options.client;
+    this.path = options?.path || 'src/types';
   }
 
   async write() {
