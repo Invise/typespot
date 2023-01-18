@@ -36,10 +36,11 @@ export class EntityTypeFile {
   }
 
   write(): void {
-    fs.writeFileSync(
-      `src/types/${this.getPascalCaseTypeName()}.ts`,
-      this.getContents()
-    );
+    const path = `src/types/${this.getPascalCaseTypeName()}.ts`;
+
+    fs.writeFileSync(path, this.getContents());
+
+    console.log(`Created ${path} ✅`);
   }
 
   getContents(): string {
