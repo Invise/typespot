@@ -6,6 +6,7 @@
   "files": [
     "lib/**/*"
   ],
+  "bin": "lib/cli.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",

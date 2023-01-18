@@ -43,7 +43,7 @@ npm install typespot
 
 Next, generate your files
 ```bash
-npx ts-node typespot --token=ACCESS_TOKEN
+npx ts-node typespot <YOUR_ACCESS_TOKEN>
 ```
 Alternatively, you may generate them programatically:
 ```ts
