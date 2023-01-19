@@ -59,7 +59,18 @@ Next, generate your files
 ```bash
 npx ts-node typespot <YOUR_ACCESS_TOKEN>
 ```
-Alternatively, you may generate them programatically:
+
+You will see something like:
+```bash
+✅ Created src/types/Company.ts
+✅ Created src/types/Contact.ts
+✅ Created src/types/Deal.ts
+✅ Created src/types/Product.ts
+🟡 403 Forbidden when reading tickets. Did you forget to assign scopes?
+🟡 403 Forbidden when reading quotes. Did you forget to assign scopes?
+```
+
+Alternatively, you may generate these files programatically:
 ```ts
 import { TypeSpot } from 'typespot';
 import { Client } from "@hubspot/api-client";
@@ -69,10 +80,9 @@ new TypeSpot({ client }).write()
 ```
 
 ### TODO
-[ ] missing some object types in CRM
-[ ] missing custom object in CRM
-[ ] ALL other types are missing
-
+[ ] missing some object types in CRM  
+[ ] missing custom object in CRM  
+[ ] ALL other types are missing  
 ### License
 MIT
 
