@@ -32,7 +32,7 @@ export class TypeSpot {
   }
 
   async write(): Promise<void> {
-    console.log(`💫💫💫 Running TypeSpot @ ${version} 💫💫💫\n`);
+    console.log(`💫 Running TypeSpot ${version}\n`);
 
     for (const entity of this.entities) {
       await this.writeEntity(entity);
