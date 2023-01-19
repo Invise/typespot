@@ -21,7 +21,7 @@ const defaultTemplate = `export type ENTITY_TYPE_NAME = {
     }
 }
 
-export type ENTITY_PROPERTIES_NAMEProperties = PROPERTY_ARRAY`;
+export const ENTITY_PROPERTIES_NAMEProperties = PROPERTY_ARRAY`;
 
 export class EntityTypeFile {
   entity: string;
