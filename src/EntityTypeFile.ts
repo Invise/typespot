@@ -15,13 +15,13 @@ const defaultSingularPluralMap = {
   },
 };
 
-const defaultTemplate = `export type ENTITY = {
+const defaultTemplate = `export type ENTITY_TYPE_NAME = {
     properties: {
         PROPERTIES
     }
 }
 
-export type ENTITYProperties = PROPERTY_ARRAY`;
+export type ENTITY_PROPERTIES_NAMEProperties = PROPERTY_ARRAY`;
 
 export class EntityTypeFile {
   entity: string;
@@ -47,7 +47,8 @@ export class EntityTypeFile {
 
   getContents(): string {
     return this.template
-      .replace('ENTITY', this.getPascalCaseTypeName())
+      .replace('ENTITY_TYPE_NAME', this.getPascalCaseTypeName())
+      .replace('ENTITY_PROPERTIES_NAME', this.getCamelCaseTypeName())
       .replace(
         '        PROPERTIES',
         this.properties
@@ -61,6 +62,12 @@ export class EntityTypeFile {
     const singular = this.singularPluralMap[this.entity];
     const pascalCase = singular.charAt(0).toUpperCase() + singular.slice(1);
     return pascalCase;
+  }
+
+  getCamelCaseTypeName(): string {
+    const singular = this.singularPluralMap[this.entity];
+    const camelCase = singular.charAt(0).toLowerCase() + singular.slice(1);
+    return camelCase;
   }
 
   getPropertyRow(property: Property): string {
