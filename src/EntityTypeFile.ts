@@ -15,11 +15,13 @@ const defaultSingularPluralMap = {
   },
 };
 
-const defaultTemplate = `type ENTITY = {
+const defaultTemplate = `export type ENTITY = {
     properties: {
         PROPERTIES
     }
-}`;
+}
+
+export type ENTITYProperties = PROPERTY_ARRAY`;
 
 export class EntityTypeFile {
   entity: string;
@@ -51,7 +53,8 @@ export class EntityTypeFile {
         this.properties
           .map(property => this.getPropertyRow(property))
           .join('\n')
-      );
+      )
+      .replace('PROPERTY_ARRAY', JSON.stringify(this.properties, null, 2));
   }
 
   getPascalCaseTypeName(): string {

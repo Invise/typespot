@@ -14,13 +14,27 @@
 This package generates explicit type files for all of your object types within your current portal, looking something like:
 
 ```ts
-type Company = {
+export type Company = {
     properties: {
         name: string
         some_custom_prop: 'cool' | 'cooler'
         // ... all default and custom props
     }
 }
+```
+
+It also exports the full definitions:
+```ts
+export const CompanyProperties = [
+    {
+        name: 'name',
+        label: 'Name',
+        description: 'Its a name!',
+        // ...
+    },
+    
+    // ...
+]
 ```
 
 ### Why?
