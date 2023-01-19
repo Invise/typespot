@@ -23,7 +23,7 @@ export type Company = {
 }
 ```
 
-It also exports the full definitions:
+For convienience it also exports the full property definitions:
 ```ts
 export const CompanyProperties = [
     {
