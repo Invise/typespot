@@ -1,18 +1,26 @@
 import { Property } from '@hubspot/api-client/lib/codegen/crm/properties';
 import * as fs from 'fs';
+import { dirname } from 'path';
 
 type EntityTypeFileOptions = {
+  path: string;
   entity: string;
   properties: Property[];
   singularPluralMap?: { [key: string]: string };
   template?: string;
+  verbose?: boolean;
 };
 
 const defaultSingularPluralMap = {
   singularPluralMap: {
     companies: 'company',
     contacts: 'contact',
+    deals: 'deal',
+    products: 'product',
+    tickets: 'ticket',
+    quotes: 'quote',
   },
+  verbose: false,
 };
 
 const defaultTemplate = `export type ENTITY_TYPE_NAME = {
@@ -24,12 +32,14 @@ const defaultTemplate = `export type ENTITY_TYPE_NAME = {
 export const ENTITY_PROPERTIES_NAMEProperties = PROPERTY_ARRAY`;
 
 export class EntityTypeFile {
+  path: string;
   entity: string;
   properties: any[];
   singularPluralMap: { [key: string]: string };
   template: string;
 
   constructor(options: EntityTypeFileOptions) {
+    this.path = options.path;
     this.entity = options.entity;
     this.properties = options.properties;
     this.singularPluralMap =
@@ -38,11 +48,12 @@ export class EntityTypeFile {
   }
 
   write(): void {
-    const path = `src/types/${this.getPascalCaseTypeName()}.ts`;
+    const path = `${this.path}/${this.getPascalCaseTypeName()}.ts`;
 
+    fs.mkdirSync(dirname(path), { recursive: true });
     fs.writeFileSync(path, this.getContents());
 
-    console.log(`Created ${path} ✅`);
+    console.log(`✅ Created ${path}`);
   }
 
   getContents(): string {
@@ -96,11 +107,11 @@ export class EntityTypeFile {
         return `        ${property.name}: unknown`;
       return `        ${property.name}: ${property.options
         .map(option => `'${option.value}'`)
-        .join(' | ')}`;
+        .join(' | ')} `;
     }
 
     const jsType = typeMap[property.type as keyof typeof typeMap] || 'unknown';
 
-    return `        ${property.name}: ${jsType}`;
+    return `        ${property.name}: ${jsType} `;
   }
 }

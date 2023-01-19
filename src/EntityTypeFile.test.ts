@@ -1,8 +1,9 @@
 import { EntityTypeFile } from './EntityTypeFile';
 
 describe('new', () => {
-  it('can instanciate using a entity and property array', () => {
+  it('can instanciate', () => {
     const factory = new EntityTypeFile({
+      path: 'src/types',
       entity: 'companies',
       properties: [
         {
